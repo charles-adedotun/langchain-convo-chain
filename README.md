@@ -69,7 +69,7 @@ If you encounter any issues or have any questions, please open an issue on GitHu
 
 ## Authors and Acknowledgement
 
-This project was created by [Your Name]. Special thanks to OpenAI for providing the GPT-3 model and the langchain library for providing tools for building conversational AI applications.
+This project was created by Adedotun Charles. Special thanks to OpenAI for providing the GPT-3.5 model and the langchain library for providing tools for building conversational AI applications.
 
 ## License
 
