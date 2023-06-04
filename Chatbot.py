@@ -10,7 +10,6 @@ MONGODB_URI, MONGODB_DB_NAME = get_db_creds()
 
 class Chatbot:
     def __init__(self):
-        self.users = {}
         self.client = MongoClient(MONGODB_URI)
         self.db = self.client[MONGODB_DB_NAME]
         self.collection = self.db['users']
@@ -18,19 +17,21 @@ class Chatbot:
     def create_user(self, user_id):
         logger.info(f"Creating new user {user_id}.")
         new_user = User(user_id)
-        self.users[user_id] = new_user
         # Save the new user to the database
         self.collection.insert_one({'user_id': user_id})
+        return new_user
 
     def get_user(self, user_id):
-        logger.info(f"User {user_id} does not exist in database. Creating new user.")
-        self.create_user(user_id)
-        return self.users.get(user_id)
+        user_data = self.collection.find_one({'user_id': user_id})
+        if user_data:
+            return User(user_id)
+        else:
+            logger.info(f"User {user_id} does not exist in database. Creating new user.")
+            return self.create_user(user_id)
 
     def delete_user(self, user_id):
-        if user_id in self.users:
-            # Remove the user from the users dictionary
-            del self.users[user_id]
+        user_data = self.collection.find_one({'user_id': user_id})
+        if user_data:
             # Delete the user's data from the MongoDB database
             self.collection.delete_one({'user_id': user_id})
             logger.info(f"User {user_id} deleted.")
