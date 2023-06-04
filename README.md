@@ -1,6 +1,6 @@
-# Chatbot Application
+# Chatbot Application (LangChain)
 
-This is a Python Flask application that implements a chatbot using OpenAI's GPT-3 model. The chatbot application is designed to process user inputs, generate responses using the GPT-3 model, and manage user data and conversation history.
+This is a Python Flask application that implements a chatbot using OpenAI's GPT-3.5 turbo model and langchain. The chatbot application is designed to process user inputs, generate responses using the GPT-3.5 model, and manage user data and conversation history with LangChain.
 
 ## License
 
@@ -27,6 +27,13 @@ Then, you can install the required packages using the `requirements.txt` file:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Next, you need to set up your environment variables. Copy the `.env.sample` file to a new file named `.env` and replace the placeholders with your actual values:
+
+```bash
+cp .env.sample .env
+# Open .env and replace the placeholders with your actual values
 ```
 
 ## Structure
@@ -69,7 +76,7 @@ If you encounter any issues or have any questions, please open an issue on GitHu
 
 ## Authors and Acknowledgement
 
-This project was created by Charles Adedotun. Special thanks to OpenAI for providing the GPT-3.5 model and the langchain library for providing tools for building conversational AI applications.
+This project was created by Charles Adedotun.
 
 ## License
 
