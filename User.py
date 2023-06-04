@@ -33,7 +33,7 @@ class User:
         with get_openai_callback() as cb:
             # Initialize conversation chain with memory
             self.memory = get_user_memory(self.user_id)
-            conversation = ConversationChain(llm=chat1, memory=self.memory, verbose=True, prompt=chain_prompt)                    
+            conversation = ConversationChain(llm=chat1, memory=self.memory, verbose=False, prompt=chain_prompt)                    
             result = conversation.run(input=question)
             save_user_memory(self.user_id, self.memory)
             logger.info(f'Generated response for user {self.user_id} with {cb.total_tokens} tokens')
