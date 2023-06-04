@@ -59,3 +59,6 @@ def run_agent_chain():
     except Exception as e:
         logger.error(f'Server error: {e}')
         return jsonify({'error': 'Server error'}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5060)
